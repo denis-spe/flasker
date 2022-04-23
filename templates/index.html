@@ -1,0 +1,55 @@
+<p>My name is {{ first_name }}</p>
+<p>{{ stuff|striptags }}</p>
+
+
+<h3>Favourite Pizza</h3>
+
+{% for topping in favourite_pizza %}
+{% if topping == 42 %}
+{{ topping|string * 100 }} <br>
+{% else %}
+{{ topping }} <br>
+{% endif %}
+
+{% endfor %}
+
+<ul>
+    # for item in favourite_pizza
+    <li>{{ item }}</li> ## Comment is ignored
+    # endfor
+</ul>
+<br><br>
+{{ favourite_pizza|reverse }}
+{{ favourite_pizza|join(' ') }}
+
+{% filter upper %}
+hi there thanks for everything
+{% endfilter %}
+
+{% set fruits = [{'Apple': 34, 'orange': 54}] %}
+
+
+<br>
+{% for item in fruits %}
+{% for key, value in item.items() %}
+We have {{ value }} {{ key }}<br>
+{% else %}
+{% endfor %}
+{% endfor %}
+
+{% set navigation %}
+    <li><a href="/">Index</a>
+    <li><a href="/downloads">Downloads</a>
+{% endset %}
+
+{{ navigation }}
+
+{% set reply | wordwrap %}
+    You navigation:
+    {{ navigation }}
+{% endset %}
+
+{{ wordwrap }}
+
+{% import 'user.html' as user %}
+{{ user.h1 }}
